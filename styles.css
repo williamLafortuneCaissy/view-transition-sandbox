@@ -1,3 +1,4 @@
+/* basic styling was AI generated */
 * {
   margin: 0;
   padding: 0;
@@ -76,53 +77,61 @@ nav a.active {
   navigation: auto;
 }
 
-/* 
-main {
-  view-transition-name: main;
-}
 
- @keyframes slide-out {
-  0% {
-    transform: translateX(0%);
-  }
 
-  100% {
-    opacity: 0;
-    transform: translateX(calc(50% * var(--direction)));
-  }
-}
-
-@keyframes slide-in {
-  0% {
-    opacity: 0;
-    transform: translateX(calc(-50% * var(--direction)));
-  }
-
-  100% {
-    transform: translateX(0%);
-  }
-}
-
-::view-transition-old(main) {
-  --direction: 1;
-  animation: slide-in 0.5s cubic-bezier(0.86, 0, 0.07, 1) reverse;
-}
-
-::view-transition-new(main) {
-  --direction: -1;
-  animation: slide-in 0.5s cubic-bezier(0.86, 0, 0.07, 1) forwards;
-}
-
-:root {
-  --direction: -1;
-}  */
-
-/*------------------------------------*/
 /* title */
+/* 
 ::view-transition-group(*) {
   animation-duration: 2s;
 }
 h1 {
   view-transition-name: title;
   width: max-content
+} */
+
+
+main {
+  view-transition-name: main;
+}
+
+@keyframes slide-from-right {
+  from {
+    translate: 100vw 0;
+  }
+}
+
+@keyframes slide-to-right {
+  to {
+    translate: 100vw 0;
+  }
+}
+
+@keyframes slide-from-left {
+  from {
+    translate: -100vw 0;
+  }
+}
+
+
+@keyframes slide-to-left {
+  to {
+    translate: -100vw 0;
+  }
+}
+
+[data-direction="forward"]::view-transition-old(main) {
+  animation: slide-to-left 1s cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+[data-direction="forward"]::view-transition-new(main) {
+  animation: slide-from-right 1s cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+
+[data-direction="backward"]::view-transition-old(main) {
+  animation: slide-to-right 1s cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+[data-direction="backward"]::view-transition-new(main) {
+  animation: slide-from-left 1s cubic-bezier(0.86, 0, 0.07, 1);
 }
